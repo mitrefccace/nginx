@@ -27,6 +27,10 @@ sudo systemctl start nginx
 ```
 pidof nginx
 ```
+1. To enable NGINX to start on boot
+```
+sudo systemctl enable nginx
+```
 
 At this point the service can be started or stopped with the following commands:
 ```
