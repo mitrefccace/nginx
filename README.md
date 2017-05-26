@@ -184,3 +184,16 @@ will rewrite this string to “Location: http://frontend/one/some/uri/”.
 A server name may be omitted in the replacement string:
 proxy_redirect http://localhost:8000/two/ /;
 then the primary server’s name and port, if different from 80, will be inserted.
+
+### Server Configuration
+We have had issues connecting to localhost, errors similar to this would appear in the NGINX log file (/var/log/nginx/error.log):
+
+connect() to 127.0.0.1:8005 failed (13: Permission denied) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:8005/", host: "localhost:8080"
+
+ This appears to be caused by the default configuration for SELinux.  To resolve the problem, run the following command:
+
+```
+ sudo setsebool -P httpd_can_network_connect 1  
+ ```
+
+ A thread discussing this problem can be found [here](http://stackoverflow.com/questions/23948527/13-permission-denied-while-connecting-to-upstreamnginx?rq=1).
