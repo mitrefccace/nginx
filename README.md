@@ -12,22 +12,31 @@ Full documentation and screenshots are here: [NGINX](https://www.nginx.com).
 
 ### NGINX Installation
 1. Add the CentOS 7 EPEL repository
+
     ```
     sudo yum install epel-release
     ```
+
 1. Install NGINX
+
     ```
     sudo yum install nginx
     ```
+
 1. Configure and Start the NGINX Service
+
     ```
     sudo systemctl start nginx
     ```
+
 1. Verify that the service is running (you should see two PIDs)
+
     ```
     pidof nginx
     ```
+
 1. To enable NGINX to start on boot
+
     ```
     sudo systemctl enable nginx
     ```
