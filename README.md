@@ -137,7 +137,7 @@ http {
 		        proxy_set_header Host $host;
 		        proxy_cache_bypass $http_upgrade;
 		        sub_filter /node /;
-		        proxy_redirect https://localhost:8005/ManagementPortal/ /ManagementPortal/;
+		        proxy_redirect https://localhost:8081/ManagementPortal/ /ManagementPortal/;
        }
     }
 }
