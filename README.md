@@ -197,7 +197,17 @@ then the primary server’s name and port, if different from 80, will be inserte
 ### Server Configuration
 We have had issues connecting to localhost, errors similar to this would appear in the NGINX log file (/var/log/nginx/error.log):
 
+```
 connect() to 127.0.0.1:8005 failed (13: Permission denied) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:8005/", host: "localhost:8080"
+```
+
+ You can also verify by running the following and looking for denied entries:
+
+ ```
+ [root@dev4demo nginx]# sudo cat /var/log/audit/audit.log | grep nginx | grep denied
+ type=AVC msg=audit(1498500957.788:3296597): avc:  denied  { name_connect } for  pid=15430 comm="nginx" dest=8005 scontext=system_u:system_r:httpd_t:s0 tcontext=system_u:object_r:mxi_port_t:s0 tclass=tcp_socket
+
+ ```
 
  This appears to be caused by the default configuration for SELinux.  To resolve the problem, run the following command:
 
