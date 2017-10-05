@@ -3,10 +3,10 @@
 # NGINX
 
 NGINX is an open-source web-server, reverse-proxy, load-balancer and HTTP cache.
-For the ACE Direct project, we are only using NGINX as a reverse proxy.
+For the ACE Direct project, NGINX is onlys used as a reverse proxy.
 
-A reverse-proxy allow us to hide internally-used port numbers and script
-names on the public-facing interface.
+A reverse-proxy allow ACE Direct to hide internally-used port numbers and script
+names from the public-facing interface.
 
 Full documentation and screenshots are here: [NGINX](https://www.nginx.com).
 
@@ -49,7 +49,7 @@ sudo service nginx stop
 
 ### NGINX Configuration
 1. Update the NGINX configuration (/etc/nginx/nginx.conf) as shown below
-1. Verify that they key and cert are properly configured
+1. Verify that both the SSH key and certificate are properly configured
 1. Restart the service
 1. Verify that the service is running (see pidof command above)
 
