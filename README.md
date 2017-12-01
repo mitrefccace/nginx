@@ -139,6 +139,11 @@ http {
 		        sub_filter /node /;
 		        proxy_redirect https://localhost:8081/ManagementPortal/ /ManagementPortal/;
        }
+        location /ace {
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_pass https://<FQDN>:<port_number>;
+                proxy_set_header Host <FQDN>:<port_number>;
+        }
     }
 }
 ```
