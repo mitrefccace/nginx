@@ -128,6 +128,12 @@ A server name may be omitted in the replacement string:
 proxy_redirect http://localhost:8000/two/ /;
 then the primary server’s name and port, if different from 80, will be inserted.
 
+
+```
+proxy_intercept_errors on|off
+```
+Determines whether proxied responses with codes greater than or equal to 300 should be passed to a client or be intercepted and redirected to nginx for processing with the error_page directive.
+
 ### Server Configuration
 We have had issues connecting to localhost, errors similar to this would
 appear in the NGINX log file (/var/log/nginx/error.log):
@@ -156,4 +162,14 @@ upstream: "http://127.0.0.1:8005/", host: "localhost:8080"
  sudo setsebool -P httpd_can_network_connect 1  
  ```
 
- A thread discussing this problem can be found [here](http://stackoverflow.com/questions/23948527/13-permission-denied-while-connecting-to-upstreamnginx?rq=1).
+ A thread discussing this problem can be found [here](http://stackoverflow.com/questions/23948528/13-permission-denied-while-connecting-to-upstreamnginx?rq=1).
+
+Also experienced an issue while attempting to point server directives to files in the same directory as nginx.config file. When configuring error pages, the html files may need to be moved to a different location. For example, changing the various root paths to:
+```
+location /html/ {
+                root /usr/share/nginx/;
+                internal;
+        }
+ ```
+may work if the current configuration does not. See /etc/nginx/nginx.config in dev1demo for complete alternative setup.
+
