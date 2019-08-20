@@ -41,6 +41,10 @@ Full documentation and screenshots are here: [NGINX](https://www.nginx.com).
     sudo systemctl enable nginx
     ```
 
+1. HTML files - create the `/etc/nginx/html` folder if it does _not_ exist. Copy files from the `html` folder in this repo to the folder you just created.
+
+1. Image files - create the `/etc/nginx/images` folder if it does _not_ exist. Copy files from the `images` folder in this repo to the folder you just created.
+
 At this point the service can be started or stopped with the following commands:
 ```
 sudo service nginx start
