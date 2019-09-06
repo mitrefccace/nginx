@@ -52,7 +52,7 @@ sudo service nginx stop
 ```
 
 ### NGINX Configuration
-1. Update the NGINX configuration (/etc/nginx/nginx.conf) as shown below
+1. Update the NGINX configuration (/etc/nginx/nginx.conf) as shown below. Note: port numbers in nginx.conf must match port numbers of other ACE Direct components. These port numbers are currently set to the defaults.
 1. Verify that both the SSH key and certificate are properly configured
 1. Restart the service
 1. Verify that the service is running (see pidof command above)
